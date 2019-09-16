@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pages.fragment.CreateBlogShortFragment">
+
+
+    <EditText
+        android:id="@+id/create_blog_short_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/create_blog_short_images"
+
+        android:background="@color/transparent"
+        android:gravity="top"
+        android:hint="请输入内容"
+        android:inputType="textMultiLine"
+        android:padding="16dp"
+        android:textSize="16sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/create_blog_short_images"
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_alignParentBottom="true" />
+
+
+</RelativeLayout>
