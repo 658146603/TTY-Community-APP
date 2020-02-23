@@ -121,14 +121,14 @@
             app:menu="@menu/nav_main" />
     </RelativeLayout>
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:name="tty.community.pages.fragment.UserFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:tag="USER"
         android:id="@+id/fragment_user">
-    </fragment>
+    </androidx.fragment.app.FragmentContainerView>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

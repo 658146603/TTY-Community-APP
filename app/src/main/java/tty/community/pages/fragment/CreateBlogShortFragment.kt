@@ -18,7 +18,8 @@ import pub.devrel.easypermissions.EasyPermissions
 import tty.community.R
 import tty.community.adapter.ImageListAdapter
 import tty.community.file.IO
-import tty.community.image.BitmapUtil
+import tty.community.image.BitmapUtil.cropCenter
+import tty.community.image.BitmapUtil.load
 import tty.community.model.BlogData
 import tty.community.model.BlogData.IGetBlogData
 import java.io.File
@@ -39,14 +40,9 @@ class CreateBlogShortFragment : Fragment(), ImageListAdapter.OnImageClickListene
         if (resultCode == Activity.RESULT_OK && data != null) {
             when (requestCode) {
                 RESULT_LOAD_IMAGE -> {
-                    val selectedImage = data.data!!
-                    val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
-                    val cursor = this@CreateBlogShortFragment.activity?.contentResolver?.query(selectedImage, filePathColumn, null, null, null)
-                    if (cursor != null && cursor.moveToFirst() && cursor.count > 0) {
-                        val path = cursor.getString(cursor.getColumnIndex(filePathColumn[0]))
-                        _bitmap = BitmapUtil.load(path, true)
-                        _bitmap?.let { imagesAdapter.add(it) }
-                        cursor.close()
+                    data.data?.let {
+                        val bitmap = context?.let { it1 -> load(it1, it).cropCenter() }
+                        bitmap?.let { it1 -> imagesAdapter.add(it1) }
                     }
                 }
             }

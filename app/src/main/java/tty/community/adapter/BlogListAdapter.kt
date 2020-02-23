@@ -22,7 +22,7 @@ import tty.community.util.Time.getFormattedTime
 import tty.community.widget.RoundAngleImageView
 import java.lang.Exception
 
-class BlogListAdapter(var context: Context, private val recyclerView: RecyclerView) : RecyclerView.Adapter<BlogListAdapter.ViewHolder>() {
+class BlogListAdapter(var context: Context, recyclerView: RecyclerView) : RecyclerView.Adapter<BlogListAdapter.ViewHolder>() {
     private var blogs = ArrayList<Outline>()
 
     private var listener: OnBlogClickListener? = null

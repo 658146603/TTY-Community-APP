@@ -418,13 +418,8 @@ class ChangeInfoActivity : AppCompatActivity(), View.OnClickListener, EasyPermis
         if (resultCode == Activity.RESULT_OK && data != null) {
             when (requestCode) {
                 RESULT_LOAD_IMAGE -> {
-                    val selectedImage = data.data!!
-                    val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
-                    val cursor = this.contentResolver?.query(selectedImage, filePathColumn, null, null, null)
-                    if (cursor != null && cursor.moveToFirst() && cursor.count > 0) {
-                        val path = cursor.getString(cursor.getColumnIndex(filePathColumn[0]))
-                        val bitmap = BitmapUtil.load(path, true).cropCenter().zoom(512, 512)
-                        cursor.close()
+                    data.data?.let {
+                        val bitmap = BitmapUtil.load(this, it).cropCenter()
                         updatePortrait(bitmap)
                     }
                 }

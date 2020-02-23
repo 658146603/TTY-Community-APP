@@ -24,8 +24,6 @@ class MainActivity : AppCompatActivity(),
     UserFragment.OnUserInteraction, View.OnClickListener {
     private lateinit var intents: Array<Intent>
 
-
-
     override fun onUserRefreshed(user: User) {
         refresh(user)
     }
