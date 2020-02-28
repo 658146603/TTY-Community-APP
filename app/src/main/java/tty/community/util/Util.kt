@@ -40,7 +40,6 @@ object Util {
             val resultByteArray = messageDigest.digest()
             //字符数组转换成字符串返回
             byteArrayToHex(resultByteArray)
-
         } catch (e: NoSuchAlgorithmException) {
             "null"
         }
